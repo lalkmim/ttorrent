@@ -29,6 +29,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.security.NoSuchAlgorithmException;
 import java.util.BitSet;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -118,7 +119,7 @@ public class SharedTorrent extends Torrent implements PeerActivityListener {
 	 * @throws IOException If the torrent file cannot be read or decoded.
 	 */
 	public SharedTorrent(Torrent torrent, File destDir)
-		throws FileNotFoundException, IOException {
+		throws FileNotFoundException, IOException, NoSuchAlgorithmException {
 		this(torrent, destDir, false);
 	}
 
@@ -140,7 +141,7 @@ public class SharedTorrent extends Torrent implements PeerActivityListener {
 	 * @throws IOException If the torrent file cannot be read or decoded.
 	 */
 	public SharedTorrent(Torrent torrent, File destDir, boolean seeder)
-		throws FileNotFoundException, IOException {
+		throws FileNotFoundException, IOException, NoSuchAlgorithmException {
 		this(torrent.getEncoded(), destDir, seeder, DEFAULT_REQUEST_STRATEGY);
 	}
 
@@ -164,7 +165,7 @@ public class SharedTorrent extends Torrent implements PeerActivityListener {
 	 */
 	public SharedTorrent(Torrent torrent, File destDir, boolean seeder,
 			RequestStrategy requestStrategy)
-		throws FileNotFoundException, IOException {
+		throws FileNotFoundException, IOException, NoSuchAlgorithmException {
 		this(torrent.getEncoded(), destDir, seeder, requestStrategy);
 	}
 
@@ -179,7 +180,7 @@ public class SharedTorrent extends Torrent implements PeerActivityListener {
 	 * @throws IOException If the torrent file cannot be read or decoded.
 	 */
 	public SharedTorrent(byte[] torrent, File destDir)
-		throws FileNotFoundException, IOException {
+		throws FileNotFoundException, IOException, NoSuchAlgorithmException {
 		this(torrent, destDir, false);
 	}
 
@@ -195,7 +196,7 @@ public class SharedTorrent extends Torrent implements PeerActivityListener {
 	 * @throws IOException If the torrent file cannot be read or decoded.
 	 */
 	public SharedTorrent(byte[] torrent, File parent, boolean seeder)
-		throws FileNotFoundException, IOException {
+		throws FileNotFoundException, IOException, NoSuchAlgorithmException {
 		this(torrent, parent, seeder, DEFAULT_REQUEST_STRATEGY);
 	}
 
@@ -213,7 +214,7 @@ public class SharedTorrent extends Torrent implements PeerActivityListener {
 	 */
 	public SharedTorrent(byte[] torrent, File parent, boolean seeder,
 			RequestStrategy requestStrategy)
-		throws FileNotFoundException, IOException {
+		throws FileNotFoundException, IOException, NoSuchAlgorithmException {
 		super(torrent, seeder);
 
 		if (parent == null || !parent.isDirectory()) {
@@ -278,7 +279,7 @@ public class SharedTorrent extends Torrent implements PeerActivityListener {
 	 * @throws IOException When the torrent file cannot be read or decoded.
 	 */
 	public static SharedTorrent fromFile(File source, File parent)
-		throws IOException {
+		throws IOException, NoSuchAlgorithmException {
 		byte[] data = FileUtils.readFileToByteArray(source);
 		return new SharedTorrent(data, parent);
 	}

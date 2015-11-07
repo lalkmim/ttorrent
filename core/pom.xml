@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.turn</groupId>
 		<artifactId>ttorrent</artifactId>
-		<version>1.5-SNAPSHOT</version>
+		<version>1.4.1-SNAPSHOT</version>
 	</parent>
 
 	<name>Java BitTorrent library core</name>
@@ -12,11 +12,6 @@
 	<packaging>jar</packaging>
 
 	<dependencies>
-		<dependency>
-			<groupId>commons-codec</groupId>
-			<artifactId>commons-codec</artifactId>
-			<version>1.8</version>
-		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
